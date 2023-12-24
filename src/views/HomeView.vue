@@ -7,7 +7,8 @@
           <v-col cols="5">
             <div class="mt-16" style="position: relative">
               <h1 class="text-grey">Hello,</h1>
-              <h1 class="text-white">I'M Bayu Septiawan</h1>
+              <h1 class="text-white">I'M <span class="text sec-text">Bayu Septiawan</span></h1>
+              
               
               <span class="text-gray">Web Designer & Developmer </span><br />
              <v-btn title dark class="text-yellow mt-8" variant="outlined "
@@ -410,6 +411,17 @@ methods: {
       const element = document.getElementById(refName);
       element.scrollIntoView({ behavior: "smooth" });
     },
+}, 
+mounted () {
+  const text = document.querySelector(".sec-text");
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Bayu Septiawan";
+            }, 0);
+             //1s = 1000 milliseconds
+        }
+        textLoad();
+        setInterval(textLoad, 12000);
 }
 });
 
@@ -549,5 +561,24 @@ methods: {
   height: auto;
   padding: 0 10% 20px 10%;
   background-color: aliceblue;
+}
+.text.sec-text:before{
+    content: "";
+    position: absolute;
+    top: 32%;
+    left: 40%;
+    height: 20%;
+    width: 100%;
+    background-color: #000000;
+    border-left: 2px solid #000000;
+    animation: animate 7s steps(14) infinite;
+}
+@keyframes animate{
+  40%, 60% {
+    left: calc(79% + 3px); 
+  }
+  100% {
+    left: 27%;
+  }
 }
 </style>
